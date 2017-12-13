@@ -2,9 +2,12 @@ import * as firebase from 'firebase'
 import * as constants from '@/store/constants'
 
 const state = {
-  progress : '',
-  url      : '',
-  error    : {}
+  progress: '',
+  url: '',
+  error: {
+    code: '',
+    message: ''
+  }
 }
 
 const actions = {
@@ -14,7 +17,7 @@ const actions = {
       .put(data.file)
     storage.on(firebase.storage.TaskEvent.STATE_CHANGED,
       snapshot => {
-        let progress = ( (snapshot.bytesTransferred / snapshot.totalBytes) * 100 ).toFixed(2)
+        const progress = ( (snapshot.bytesTransferred / snapshot.totalBytes) * 100 ).toFixed(2)
         commit(constants.UPLOADER_SET_PROGRESS, progress)
       },
       error => {
@@ -32,11 +35,11 @@ const mutations = {
   [constants.UPLOADER_SET_PROGRESS]: (state, progress) => {
     state.progress = progress
   },
-  [constants.UPLOADER_SET_ERROR]: (state, error) => {
-    state.error = error
-  },
   [constants.UPLOADER_SET_URL]: (state, url) => {
     state.url = url
+  },
+  [constants.UPLOADER_SET_ERROR]: (state, error) => {
+    state.error = error
   }
 }
 
@@ -49,6 +52,9 @@ const getters = {
   },
   [constants.UPLOADER_IS_UPLOADED]: state => {
     return state.progress === '' && state.url !== ''
+  },
+  [constants.UPLOADER_IS_ERROR]: state => {
+    return state.error.code !== ''
   }
 }
 

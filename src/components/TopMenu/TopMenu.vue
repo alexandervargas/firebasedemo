@@ -18,11 +18,11 @@
         </li>
         <li class="nav-item dropdown" v-if="isLogged()">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Options
+            Manage content
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <router-link class="dropdown-item" :to="{ name: 'Uploader' }">Uploader</router-link>
-            <router-link class="dropdown-item" :to="{ name: 'Information' }">Information</router-link>
+            <router-link class="dropdown-item" :to="{ name: 'List' }">List</router-link>
           </div>
         </li>
       </ul>
