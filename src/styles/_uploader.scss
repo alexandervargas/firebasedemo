@@ -1,0 +1,38 @@
+.dropbox {
+  outline: 2px dashed grey;
+  /* the dash box */
+  background: #109;
+  min-height: 100px;
+  /* minimum height */
+  position: relative;
+  cursor: pointer;
+  &:hover {
+    background: $primary;
+    /* when mouse over to the drop zone, change color */
+  }
+  p {
+    font-size: 1.2em;
+    text-align: center;
+    padding: 50px 0;
+  }
+}
+
+.input-file {
+  opacity: 0;
+  /* invisible but it's there! */
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.reset:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.progress-text {
+  font-size: 1.3em;
+  font-weight: bold;
+  padding-top: 7px;
+}
